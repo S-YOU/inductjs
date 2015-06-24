@@ -2,15 +2,15 @@
 <html>
 
 <head>
-    <title>Rendering With InductJS (Text Only)</title>
-    <script>var USE_NESTED = true, USE_TEXT = true;</script>
+    <title>Rendering With Angular with doTA (Text Only)</title>
+    <script>var USE_NESTED = true; USE_TEXT = true;</script>
 </head>
 
-<body>
-<h1>Rendering With InductJS (Text Only)</h1>
-<h3><a href="angular-html.html">AngularJS (HTML)</a> | <a href="angular.html">AngularJS (Text)</a> | <a href="induct-html.html">InductJS (HTML)</a> | <a href="react-old-html.html">React 0.12.2 (HTML)</a> | <a href="react-old.html">React 0.12.2 (Text)</a> | <a href="react-html.html">React 0.13.3 (HTML)</a> | <a href="react.html">React 0.13.3 (Text)</a> | <a href="dota.html">doTA (Text)</a> | <a href="dota-html.html">doTA (HTML)</a></h3>
+<body ng-app="fasterAngular">
+<h1>Rendering With Angular with doTA (Text Only)</h1>
+<h3><a href="angular-html.html">AngularJS (HTML)</a> | <a href="angular-html.html">AngularJS (HTML)</a> | <a href="induct-html.html">InductJS (HTML)</a> | <a href="induct.html">InductJS (Text)</a> | <a href="react-old-html.html">React 0.12.2 (HTML)</a> | <a href="react-old.html">React 0.12.2 (Text)</a> | <a href="react-html.html">React 0.13.3 (HTML)</a> | <a href="react.html">React 0.13.3 (Text)</a> | <a href="dota-html.html">doTA (HTML)</a></h3>
 
-<div style="width: 800px;"><p>Below is a large array of test data used for performance comparisons between React, AngularJS, and InductJS. On this page, each row of the displayed content is actually composed of 15 individually tracked elements, each of which can only display text (non-HTML) content. See <a href="./induct-html.html">here</a> for a similar comparison which uses template sites which can display arbitrary HTML content. You can use the buttons below to perform various operations on the array and see how long they take. Time taken will appear in the console as well as in the area below. You can also change the number of iterations to perform a given operation and the time to complete it will be averaged over that many runs. </p></div>
+<div style="width: 800px;"><p>Below is a large array of test data used for performance comparisons between React, AngularJS, and InductJS. On this page, each row of the displayed content is actually composed of 15 individually tracked elements, each of which can only display text (non-HTML) content. See <a href="./angular-html.html">here</a> for a similar comparison which uses template sites which can display arbitrary HTML content. You can use the buttons below to perform various operations on the array and see how long they take. Time taken will appear in the console as well as in the area below. You can also change the number of iterations to perform a given operation and the time to complete it will be averaged over that many runs. </p></div>
 
 <div><p id="textOutput">Performance info will appear here!</p></div>
 
@@ -44,11 +44,17 @@
     <button onclick="rerenderNoChange()" title="Request a rerender though nothing has actually changed">Rerender With No Changes</button>
 </div>
 
-<div id="insertPoint"></div>
+
+<div ng-controller="mycontroller">
+  <div dota-render=1 event=0 inline=1 watch=updated><table><tr><th colspan="5">Large Nested List:</th></tr><tr class="dataLine" ng-repeat="line in dataLines"><td><span class="dataToken" ng-repeat="token in line">{{token}}</span></td></tr></table></div>
+</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+    <script src="https://rawgit.com/S-YOU/doTA/master/dist/ngDoTA.min.js"></script>
+    <script src="../js/script-common.js"></script>
+    <script src="../js/script-dota.js"></script>
+
 </body>
 
-<script src="../../induct.js"></script>
-<script src="../js/script-common.js"></script>
-<script src="../js/script-induct.js"></script>
 
 </html>
